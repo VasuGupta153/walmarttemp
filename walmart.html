@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walmart</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{
+      text-align: center;
+    }
+    a {
+        position: absolute;
+        right: 20vh;
+        top: 90vh;
+        }
+        .scanner-img {
+        width: 50px;
+        }
+    .screent{
+      width: 100vw;
+      height:100vh;
+    }
+  </style>
+</head>
+<body>
+ <img class = "screent" src="Screenshot 2023-08-10 000556.png" alt="screent">
+ <a href="#" id="openCameraLink"> <img src="barcode.png" class = "scanner-img" alt="barcode"> </a>
+    <script>
+        document.getElementById("openCameraLink").addEventListener("click", function() {
+            // Request access to the user's camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                // Display the camera stream in a video element
+                var videoElement = document.createElement("video");
+                videoElement.srcObject = stream;
+                videoElement.autoplay = true;
+                document.body.appendChild(videoElement);
+            })
+            .catch(function(error) {
+                console.error("Error accessing camera:", error);
+            });
+        });
+    </script>
+</body>
+</html>
